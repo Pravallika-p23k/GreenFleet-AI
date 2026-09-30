@@ -90,7 +90,7 @@ export default function Sidebar({ open, setOpen }) {
         <div className="mt-8 p-3.5 rounded-xl bg-navy-950 border border-navy-800 text-xs">
           <div className="flex items-center gap-2 text-emerald-400 font-semibold mb-1">
             <Sparkles className="w-3.5 h-3.5" />
-            <span>GreenFleet AI v1.0</span>
+            <span>AQUA SETU v1.0</span>
           </div>
           <p className="text-slate-400 text-[11px] leading-relaxed">
             Quantum-Inspired Green Fleet Optimization platform for maritime operators.
