@@ -18,8 +18,19 @@ export default function SignupPage() {
       return;
     }
 
-    // Temporary frontend signup
-    // Connect this to your FastAPI backend later.
+    // Save the newly created account
+    const newUser = {
+      name: name,
+      email: email,
+      password: password,
+      role: "Fleet Manager",
+    };
+
+    localStorage.setItem("greenfleet_account", JSON.stringify(newUser));
+
+    // Go to login after signup
+    alert("Account created successfully. Please login.");
+
     navigate("/login");
   };
 
@@ -40,6 +51,7 @@ export default function SignupPage() {
       }}
     >
       <div className="absolute w-96 h-96 bg-[#2DD4BF]/10 rounded-full blur-3xl top-10 left-10" />
+
       <div className="absolute w-96 h-96 bg-[#38BDF8]/10 rounded-full blur-3xl bottom-10 right-10" />
 
       <div className="relative z-10 w-full max-w-md">
@@ -52,7 +64,7 @@ export default function SignupPage() {
 
             <div className="text-left">
               <h1 className="text-xl font-extrabold">
-               AUQA <span className="text-[#2DD4BF]">SETU</span>
+                AUQA <span className="text-[#2DD4BF]">SETU</span>
               </h1>
 
               <p className="text-[9px] uppercase tracking-widest text-[#718A9A]">
@@ -149,6 +161,7 @@ export default function SignupPage() {
               </div>
             </div>
 
+            {/* CREATE ACCOUNT */}
             <button
               type="submit"
               className="w-full py-3 mt-2 rounded-xl bg-[#0D9488] hover:bg-[#2DD4BF] text-[#06141F] font-bold flex items-center justify-center gap-2 transition"
@@ -158,6 +171,7 @@ export default function SignupPage() {
             </button>
           </form>
 
+          {/* LOGIN LINK */}
           <p className="text-sm text-center text-[#8BA3B3] mt-6">
             Already have an account?{" "}
             <Link

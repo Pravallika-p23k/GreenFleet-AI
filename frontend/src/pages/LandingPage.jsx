@@ -1070,19 +1070,14 @@ export default function LandingPage() {
 
               <div className="mt-8 flex flex-wrap justify-center gap-4">
                 <Link
-                  to="/dashboard"
+                  to="/signup"
                   className="px-7 py-4 rounded-xl bg-[#0D9488] hover:bg-[#2DD4BF] text-[#06141F] font-extrabold transition flex items-center gap-2"
                 >
-                  Open Platform
+                 Get Started
                   <ArrowRight className="w-5 h-5" />
                 </Link>
 
-                <Link
-                  to="/simulator"
-                  className="px-7 py-4 rounded-xl border border-[#16445A] hover:border-[#2DD4BF] text-[#D7E2E8] hover:text-[#5EEAD4] font-bold transition"
-                >
-                  Run Scenario
-                </Link>
+                
               </div>
             </div>
           </div>
