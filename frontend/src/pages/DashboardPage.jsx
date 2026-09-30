@@ -14,8 +14,8 @@ import {
   ResponsiveContainer,
   AreaChart,
   Area,
-  BarChart,
-  Bar,
+  LineChart,
+  Line,
   PieChart,
   Pie,
   Cell,
@@ -33,12 +33,12 @@ import DemoBadge from "../components/DemoBadge";
 // ============================================================
 
 const COLORS = [
-  "#2DD4BF", // Aqua Teal
-  "#38BDF8", // Sky Blue
-  "#14B8A6", // Teal
-  "#5EEAD4", // Light Aqua
-  "#FBBF24", // Amber
-  "#94A3B8", // Slate
+  "#FF6B6B", // HFO - Coral Red
+  "#4D96FF", // MGO - Blue
+  "#00C2FF", // LNG - Cyan
+  "#9B5DE5", // Methanol - Purple
+  "#FFB703", // Ammonia - Gold
+  "#F1F5F9", // Hydrogen - White
 ];
 
 const THEME = {
@@ -429,7 +429,7 @@ export default function DashboardPage() {
 
           <div className="h-56 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data.co2_trend}>
+              <LineChart data={data.co2_trend}>
                 <CartesianGrid strokeDasharray="3 3" stroke={THEME.grid} />
 
                 <XAxis dataKey="day" stroke="#718A9A" tick={{ fontSize: 12 }} />
@@ -437,19 +437,22 @@ export default function DashboardPage() {
                 <YAxis stroke="#718A9A" tick={{ fontSize: 12 }} />
 
                 <Tooltip
-                  cursor={{ fill: "transparent" }}
+                  cursor={{ stroke: THEME.border, strokeDasharray: "3 3" }}
                   contentStyle={tooltipStyle}
                   labelStyle={{ color: THEME.text }}
                   itemStyle={{ color: THEME.aqua }}
                 />
 
-                <Bar
+                <Line
+                  type="monotone"
                   dataKey="co2_emissions"
-                  fill="#2DD4BF"
-                  radius={[6, 6, 0, 0]}
+                  stroke="#d3dddb"
+                  strokeWidth={3}
+                  dot={{ r: 4, fill: "#d3dddb" }}
+                  activeDot={{ r: 6 }}
                   name="CO₂ Emissions (tons)"
                 />
-              </BarChart>
+              </LineChart>
             </ResponsiveContainer>
           </div>
         </div>
@@ -481,33 +484,40 @@ export default function DashboardPage() {
 
           <div className="h-56 w-full">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data.vessel_efficiency} layout="vertical">
+              <LineChart data={data.vessel_efficiency}>
                 <CartesianGrid strokeDasharray="3 3" stroke={THEME.grid} />
 
-                <XAxis type="number" domain={[0, 100]} stroke="#718A9A" />
+                <XAxis
+                  dataKey="name"
+                  stroke="#8BA3B3"
+                  tick={{ fontSize: 10 }}
+                  interval={0}
+                />
 
                 <YAxis
-                  dataKey="name"
-                  type="category"
-                  stroke="#8BA3B3"
-                  width={110}
+                  type="number"
+                  domain={[60, 120]}
+                  stroke="#718A9A"
                   tick={{ fontSize: 11 }}
                 />
 
                 <Tooltip
-                  cursor={{ fill: "transparent" }}
+                  cursor={{ stroke: THEME.border, strokeDasharray: "3 3" }}
                   contentStyle={tooltipStyle}
                   labelStyle={{ color: THEME.text }}
                   itemStyle={{ color: THEME.aqua }}
                 />
 
-                <Bar
+                <Line
+                  type="monotone"
                   dataKey="rating"
-                  fill="#5EEAD4"
-                  radius={[0, 6, 6, 0]}
+                  stroke="#e9f0ef"
+                  strokeWidth={3}
+                  dot={{ r: 4, fill: "#e9f0ef" }}
+                  activeDot={{ r: 6 }}
                   name="Efficiency Rating Score"
                 />
-              </BarChart>
+              </LineChart>
             </ResponsiveContainer>
           </div>
         </div>
